@@ -20,12 +20,14 @@ Route::get('/', function () {
 
 /////////////////////////////////////Lab 3//////////////////////////////////
 
-Route::get('school/students', 'App\Http\Controllers\SchoolController@allStudents')->name('students.all');
-Route::get('school/student/create', 'App\Http\Controllers\SchoolController@createStudent')->name('student.create');
-Route::get('school/student/{id}/edit', 'App\Http\Controllers\SchoolController@editStudent')->name('student.edit');
-Route::post('school', 'App\Http\Controllers\SchoolController@storeStudent');
-Route::put('school/student/{id}', 'App\Http\Controllers\SchoolController@updateStudent')->name('student.update');
-Route::delete('school/student/{id}', 'App\Http\Controllers\SchoolController@deleteStudent')->name('student.delete');
+
+Route::get('school/students', 'App\Http\Controllers\SchoolController@allStudents')->name('students.all')->middleware('auth');
+Route::get('school/student/create', 'App\Http\Controllers\SchoolController@createStudent')->name('student.create')->middleware('auth');
+Route::get('school/student/{student}/edit', 'App\Http\Controllers\SchoolController@editStudent')->name('student.edit')->middleware('auth');
+Route::post('school', 'App\Http\Controllers\SchoolController@storeStudent')->middleware('auth');
+Route::put('school/student/{student}', 'App\Http\Controllers\SchoolController@updateStudent')->name('student.update')->middleware('auth');
+Route::delete('school/student/{id}', 'App\Http\Controllers\SchoolController@deleteStudent')->name('student.delete')->middleware('auth');
+
 
 ////////////////////////////////////Lab 2///////////////////////////////////
 

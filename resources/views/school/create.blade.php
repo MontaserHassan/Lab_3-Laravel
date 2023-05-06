@@ -11,16 +11,25 @@
         <div class="mb-3 m-4">
             <label for="IDno" class="form-label">IDno</label>
             {!! Form::text('IDno', null, ['class' => 'form-control']) !!}
+            @error('IDno')
+            <div class="alert alert-danger w-50 mt-1 fw-bolder">{{ $message }}</div>
+            @enderror
         </div>
 
         <div class="mb-3 m-4">
             <label for="name" class="form-label">Student Name</label>
             {!! Form::text('name', null, ['class' => 'form-control']) !!}
+            @error('name')
+                <div class="alert alert-danger w-50 mt-1 fw-bolder">{{ $message }}</div>
+            @enderror
         </div>
 
         <div class="mb-3 m-4">
             <label for="age" class="form-label">Student Age</label>
             {!! Form::number('age', null, ['class' => 'form-control']) !!}
+            @error('age')
+                <div class="alert alert-danger w-50 mt-1 fw-bolder">{{ $message }}</div>
+            @enderror
         </div>
 
         <div class="col-md-12 m-auto mb-3 text-center">
