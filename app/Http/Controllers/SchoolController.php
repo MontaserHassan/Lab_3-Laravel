@@ -30,7 +30,6 @@ class SchoolController extends Controller
         $student->name = $request->name;
         $student->age = $request->age;
         $student->user_id = $request->user()->id;
-        // $student->save();
         if($student->save()){
             $request->session()->flash('success','Added successfully');
             return redirect()->route('students.all');
@@ -40,7 +39,8 @@ class SchoolController extends Controller
     public function allStudents(){
         // $students = Student::where('user_id', Auth::id())->onlyTrashed()->get();
         // $students = Student::where('user_id', Auth::id())->withTrashed()->get();
-        $students = Student::where('user_id', Auth::id())->get();
+        // $students = Student::where('user_id', Auth::id())->get();
+        $students = Auth::user()->students;
         return view('school.students', ['students' => $students]);
     }
 

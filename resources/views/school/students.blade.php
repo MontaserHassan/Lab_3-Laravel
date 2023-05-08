@@ -24,6 +24,7 @@
                 <th>IDno</th>
                 <th>Name</th>
                 <th>Age</th>
+                <th>Created By</th>
                 <th>UPDATE</th>
                 <th>DELETE</th>
             </tr>
@@ -38,6 +39,7 @@
                     <td>{{ $student->IDno }}</td>
                     <td>{{ $student->name }}</td>
                     <td>{{ $student->age }}</td>
+                    <td>{{ $student->user->name }}</td>
                     <td><a class="btn btn-warning fw-semibold" onclick="return confirm('Are you sure you want to edit this student?')" href="{{ route('student.edit', $student->id) }}">UPDATE</a></td>
                     <td>
                         <form action="{{ route('student.delete', $student->id) }}" method="POST">
